@@ -60,7 +60,7 @@
 								placeholder="e.g. Jane Appleseed"
 								id="cardholder-name"
 								class="input"
-								
+								maxlength="24"
 							/>
 						</label>
 						<p id="nameError" class="error-info hidden"></p>
@@ -72,6 +72,7 @@
 								id="card-number"
 								class="input"
 								autocomplete="cc-number"
+								maxlength="16"
 							/>
 						</label>
 						<p id="numberError" class="error-info hidden"></p>
@@ -86,13 +87,15 @@
 											placeholder="MM"
 											id="card-mounth"
 											autocomplete="cc-exp-month"
+											maxlength="2"
 										/>
 										<input
 											class="small-input input"
 											type="text"
-											placeholder="YY"
+											placeholder="YYYY"
 											id="card-year"
 											autocomplete="cc-exp-year"
+											maxlength="4"
 										/>
 									</div>
 								</label>
@@ -128,7 +131,7 @@
 					</div>
 				</form>
 			</main>
-			<footer>
+			<!-- <footer>
 				<div class="attribution">
 					Challenge by
 					<a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
@@ -137,7 +140,7 @@
 						href="https://github.com/Szidelo"
 						>Repository</a
 					>
-				</div>
+				</div> -->
 			</footer>
 		</div>
 

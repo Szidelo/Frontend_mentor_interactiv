@@ -293,7 +293,6 @@ html {
 	}
 
 	.form-wrapper {
-		
 		padding: 20px;
 	}
 
@@ -305,7 +304,7 @@ html {
 	.card-front-div {
 		position: inherit;
 	}
-	
+
 	.front-card {
 		position: absolute;
 		left: 1.2em;
@@ -314,7 +313,7 @@ html {
 		width: 280px;
 		z-index: 3;
 	}
-	
+
 	.card-logo {
 		position: absolute;
 		left: 1.5em;
@@ -323,14 +322,14 @@ html {
 		z-index: 4;
 		width: 55px;
 	}
-	
+
 	.card-number {
 		position: absolute;
 		top: 12.5em;
 		left: 2em;
 		z-index: 4;
 	}
-	
+
 	.card-number > span {
 		font-size: 16px;
 		font-weight: 500;
@@ -338,7 +337,7 @@ html {
 		letter-spacing: 4px;
 		width: 100%;
 	}
-	
+
 	.card-details {
 		position: absolute;
 		top: 14em;
@@ -353,13 +352,13 @@ html {
 		display: flex;
 		align-items: first baseline;
 	}
-	
+
 	.card-details span {
 		color: var(--white);
 		font-size: 10px;
 		letter-spacing: 2px;
 	}
-	
+
 	.card-back {
 		position: absolute;
 		left: 4.2em;
@@ -368,7 +367,7 @@ html {
 		width: 280px;
 		z-index: 1;
 	}
-	
+
 	.card-back-div > span {
 		position: absolute;
 		left: 30em;
@@ -402,20 +401,109 @@ html {
 		padding-left: 0;
 		padding-top: 80px;
 	}
-	
+
 	.complated button {
 		width: 340px;
 	}
-	
+
 	.complated h1 {
 		text-transform: uppercase;
 		letter-spacing: 4px;
 		font-size: 1.5em;
 	}
-	
+
 	.complated p {
 		letter-spacing: 2px;
 		font-size: 14px;
 		color: var(--dark-gray-violet);
 	}
-  }
+}
+
+@media (max-width: 380px) {
+	body:after {
+		background-image: url(./images/bg-main-mobile.png);
+		height: 48vh;
+		width: 100%;
+		position: absolute;
+	}
+
+	.front-card {
+		left: 0.4em;
+		top: 8em;
+		width: 250px;
+	}
+
+	.card-logo {
+		left: 1em;
+		width: 40px;
+	}
+
+	.card-number {
+		position: absolute;
+		left: 1.6em;
+		z-index: 4;
+	}
+
+	.card-number > span {
+		font-size: 12px;
+	}
+
+	.card-details {
+		left: 1.6em;
+		width: 206px;
+	}
+
+	.card-back {
+		left: 1.2em;
+		width: 250px;
+	}
+
+	.card-back-div > span {
+		left: 21.5em;
+		top: 9.8em;
+	}
+
+	.form-div {
+		height: auto;
+		padding-top: 50px;
+	}
+
+	.form-wrapper {
+		padding: 0 10px;
+	}
+
+	.form {
+		width: 100%;
+	}
+
+	.form-div label {
+		gap: 5px;
+		font-size: 9px;
+		font-weight: 600;
+		letter-spacing: 1px;
+	}
+
+	.input {
+		padding: 13px;
+		border: 1px solid var(--dark-gray-violet);
+		opacity: 0.6;
+		border-radius: 7px;
+	}
+	.small-input {
+		max-width: 100%x;
+		margin-right: 5px;
+	}
+
+	#card-cvv {
+		width: auto;
+		max-width: 100%;
+	}
+
+	.left-labels {
+		width: 50%;
+	}
+
+	.right-labels {
+		width: 50%;
+	}
+}
