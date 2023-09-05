@@ -67,7 +67,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			cardholderMounthInput.value.length > 2 ||
 			cardholderYearInput.value.length > 4 ||
 			cardholderMounthInput.value > 12 ||
-			cardholderYearInput.value < 23
+			cardholderYearInput.value < 2023
 		) {
 			dateErrorPara.classList.remove("hidden");
 			dateErrorPara.innerText = "Must contain a valid date";
