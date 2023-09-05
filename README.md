@@ -59,106 +59,98 @@ Additionally, implementing the logic for error messages posed a significant diff
 See below:
 
 ```js
-const validateForm = () => {
+	// Function to validate cardholder name
+	const validateName = () => {
+		const cardholderNameInput = document.getElementById("cardholder-name");
 		const nameErrorPara = document.getElementById("nameError");
-		const numberErrorPara = document.getElementById("numberError");
-		const dateErrorPara = document.getElementById("dateError");
-		const cvvErrorPara = document.getElementById("cvvError");
-
-		let nameError = false;
-		let numberError = false;
-		let dateError = false;
-		let cvvError = false;
 
 		if (cardholderNameInput.value === "") {
-			nameError = true;
+			nameErrorPara.classList.remove("hidden");
+			nameErrorPara.innerText = "Can't be blank";
+			return true;
 		}
 
+		nameErrorPara.classList.add("hidden");
+		nameErrorPara.innerText = "";
+		return false;
+	};
+
+	// Function to validate cardholder number
+	const validateNumber = () => {
+		const cardholderNumberInput = document.getElementById("card-number");
+		const numberErrorPara = document.getElementById("numberError");
+
 		if (cardholderNumberInput.value === "") {
-			numberError = true;
-		} else if (cardholderNumberInput.value.length != 16) {
-			numberError = true;
-		} else if (!/^\d+$/.test(cardholderNumberInput.value)) {
-			numberError = true;
+			numberErrorPara.classList.remove("hidden");
+			numberErrorPara.innerText = "Can't be blank";
+			return true;
+		} else if (
+			cardholderNumberInput.value.length !== 16 ||
+			!/^\d+$/.test(cardholderNumberInput.value)
+		) {
+			numberErrorPara.classList.remove("hidden");
+			numberErrorPara.innerText = "Must contain 16 digits and only numbers";
+			return true;
 		}
+
+		numberErrorPara.classList.add("hidden");
+		numberErrorPara.innerText = "";
+		return false;
+	};
+
+	// Function to validate card expiration date
+	const validateDate = () => {
+		const cardholderMounthInput = document.getElementById("card-mounth");
+		const cardholderYearInput = document.getElementById("card-year");
+		const dateErrorPara = document.getElementById("dateError");
 
 		if (
 			cardholderMounthInput.value === "" ||
 			cardholderYearInput.value === ""
 		) {
-			dateError = true;
+			dateErrorPara.classList.remove("hidden");
+			dateErrorPara.innerText = "Can't be blank";
+			return true;
 		} else if (
 			cardholderMounthInput.value.length > 2 ||
-			cardholderYearInput.value.length > 2
-		) {
-			dateError = true;
-		} else if (
+			cardholderYearInput.value.length > 4 ||
 			cardholderMounthInput.value > 12 ||
 			cardholderYearInput.value < 23
 		) {
-			dateError = true;
-		}
-
-		if (cardholderCvvInput.value === "") {
-			cvvError = true;
-		}
-
-		if (nameError) {
-			nameErrorPara.classList.remove("hidden");
-			nameErrorPara.innerText = `Can't be blank`;
-		} else {
-			nameErrorPara.classList.add("hidden");
-			nameErrorPara.innerText = "";
-		}
-
-		if (numberError) {
-			numberErrorPara.classList.remove("hidden");
-			if (cardholderNumberInput.value === "") {
-				numberErrorPara.innerText = `Can't be blank`;
-			} else if (cardholderNumberInput.value.length != 16) {
-				numberErrorPara.innerText = `Must contain 16 digits`;
-			} else if (!/^\d+$/.test(cardholderNumberInput.value)) {
-				numberErrorPara.innerText = `Wrong format, numbers only`;
-			}
-		} else {
-			numberErrorPara.classList.add("hidden");
-			numberErrorPara.innerText = "";
-		}
-
-		if (dateError) {
 			dateErrorPara.classList.remove("hidden");
-			if (
-				cardholderMounthInput.value === "" ||
-				cardholderYearInput.value === ""
-			) {
-				dateErrorPara.innerText = `Can't be blank`;
-			} else if (
-				cardholderMounthInput.value.length > 2 ||
-				cardholderYearInput.value.length > 2
-			) {
-				dateErrorPara.innerText = `Must contain 2 digits`;
-			} else if (
-				cardholderMounthInput.value > 12 ||
-				cardholderYearInput.value < 23
-			) {
-				dateErrorPara.innerText = `Must contain a valid number`;
-			}
-		} else {
-			dateErrorPara.classList.add("hidden");
-			dateErrorPara.innerText = "";
-		}
-
-		if (cvvError) {
-			cvvErrorPara.classList.remove("hidden");
-			cvvErrorPara.innerText = `Can't be blank`;
-		} else {
-			cvvErrorPara.classList.add("hidden");
-			cvvErrorPara.innerText = "";
-		}
-
-		if (nameError || numberError || dateError || cvvError) {
+			dateErrorPara.innerText = "Must contain a valid date";
 			return true;
 		}
+
+		dateErrorPara.classList.add("hidden");
+		dateErrorPara.innerText = "";
+		return false;
+	};
+
+	// Function to validate CVV
+	const validateCVV = () => {
+		const cardholderCvvInput = document.getElementById("card-cvv");
+		const cvvErrorPara = document.getElementById("cvvError");
+
+		if (cardholderCvvInput.value === "") {
+			cvvErrorPara.classList.remove("hidden");
+			cvvErrorPara.innerText = "Can't be blank";
+			return true;
+		}
+
+		cvvErrorPara.classList.add("hidden");
+		cvvErrorPara.innerText = "";
+		return false;
+	};
+
+	// Function to validate the entire form
+	const validateForm = () => {
+		const nameError = validateName();
+		const numberError = validateNumber();
+		const dateError = validateDate();
+		const cvvError = validateCVV();
+
+		return nameError || numberError || dateError || cvvError;
 	};
 
 	confirmButton.addEventListener("click", (event) => {
